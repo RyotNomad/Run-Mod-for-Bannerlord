@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="combat_parameters">
+  <native_parameters>   
+
+    <!-- human movement related -->
+    <native_parameter id="bipedal_speed_multiplier" value="10"/>              <!--Change this value, default is 6.2, horses run at about 12, I advise a value of 8-10-->
+
+  </native_parameters>
+</base>
