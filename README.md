@@ -5,9 +5,12 @@ Currently there is no documentation for Bannerlord so modding the game requires 
 
 The mod I created took around 12 hours to both understand the games code, implement my solution, test and debug. Currently I'm not aware of any bugs but I've posted it to NexusMods in the hopes of the public finding mistakes I could not through gameplay.
 
-###How it works:
+To change the sprint button change the value in settings.cfg to the corresponding value in https://pastebin.com/v5Vz84ys
 
-#tldr: All char movement is set to a high value through **XML** but limited in the games onTick() function, pressing the button causes #only the players character to receive a higher limit and thus moves faster while the button is held. 
+To change run speed, edit the native_parameters_CTS.xml file in ModuleData
+### How it works:
+
+# tldr: All char movement is set to a high value through **XML** but limited in the games onTick() function, pressing the button causes only the players character to receive a higher limit and thus moves faster while the button is held. 
 
 Decompiling the games **dlls** showed huge amounts of code with no comments and most of the games functions stored the TaleWorlds.MountAndBlade.dll
 
