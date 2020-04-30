@@ -8,6 +8,9 @@ The mod I created took around 12 hours to both understand the games code, implem
 To change the sprint button change the value in settings.cfg to the corresponding value in https://pastebin.com/v5Vz84ys
 
 To change run speed, edit the native_parameters_CTS.xml file in ModuleData
+
+### How can I use this mod?
+https://www.nexusmods.com/mountandblade2bannerlord/mods/1153
 ### How it works:
 
 # tldr: All char movement is set to a high value through **XML** but limited in the games onTick() function, pressing the button causes only the players character to receive a higher limit and thus moves faster while the button is held. 
