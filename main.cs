@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -25,9 +25,20 @@ namespace RunMod
 				bool flag = array[i].StartsWith("//");
 				if (!flag)
 				{
-					this.sprintKey = (InputKey)int.Parse(array[i]);
+					this.settings.Add(array[i].Split(new char[]
+					{
+						'='
+					})[0], array[i].Split(new char[]
+					{
+						'='
+					})[1]);
 				}
 			}
+			this.sprintKey = (InputKey)int.Parse(this.settings["SprintKey"]);
+			this.backKey = (InputKey)int.Parse(this.settings["BackKey"]);
+			this.leftKey = (InputKey)int.Parse(this.settings["LeftKey"]);
+			this.rightKey = (InputKey)int.Parse(this.settings["RightKey"]);
+
 
 
 
@@ -48,24 +59,24 @@ namespace RunMod
 
 						bool setDef = false;
 						Agent main = Agent.Main;
-						
+
 
 						bool flag5 = main == null;
 						if (!flag5)
 						{
-							
-							main.SetMaximumSpeedLimit(0.6f, true);
+
+							main.SetMaximumSpeedLimit(0.55f, true);
 
 
 							if (!setDef)
 							{
-								main.SetMaximumSpeedLimit(0.5f, true);
+								main.SetMaximumSpeedLimit(0.55f, true);
 								foreach (Agent agent in Mission.Current.AllAgents)
 								{
-									
+
 									if (!agent.IsMount)
 									{
-										agent.SetMaximumSpeedLimit(0.6f, true);
+										agent.SetMaximumSpeedLimit(0.55f, true);
 									}
 									else
 									{
@@ -80,8 +91,26 @@ namespace RunMod
 							if (Input.IsKeyDown(sprintKey))
 							{
 								main.SetMaximumSpeedLimit(5f, true);
+							}
+							
+							else if (Input.IsKeyDown( backKey))
+							{
+							//	InformationManager.DisplayMessage(new InformationMessage(main.GetCurrentSpeedLimit().ToString()));
 
+								main.SetMaximumSpeedLimit(0.279f, true);
+							}
 
+							else if (Input.IsKeyDown(leftKey))
+							{
+								//InformationManager.DisplayMessage(new InformationMessage(main.GetCurrentSpeedLimit().ToString()));
+
+								main.SetMaximumSpeedLimit(0.403f, true);
+							}
+							else if (Input.IsKeyDown(rightKey))
+							{
+								//InformationManager.DisplayMessage(new InformationMessage(main.GetCurrentSpeedLimit().ToString()));
+
+								main.SetMaximumSpeedLimit(0.403f, true);
 							}
 						}
 					}
@@ -95,10 +124,13 @@ namespace RunMod
 
 
 		private InputKey sprintKey = InputKey.V;
+		private InputKey leftKey = InputKey.A;
+		private InputKey rightKey = InputKey.D;
+		private InputKey backKey = InputKey.S;
+
 
 
 
 
 	}
 }
-
