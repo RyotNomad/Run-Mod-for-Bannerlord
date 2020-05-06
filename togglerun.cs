@@ -25,9 +25,20 @@ namespace RunMod
 				bool flag = array[i].StartsWith("//");
 				if (!flag)
 				{
-					this.sprintKey = (InputKey)int.Parse(array[i]);
+					this.settings.Add(array[i].Split(new char[]
+					{
+						'='
+					})[0], array[i].Split(new char[]
+					{
+						'='
+					})[1]);
 				}
 			}
+			this.sprintKey = (InputKey)int.Parse(this.settings["SprintKey"]);
+			this.backKey = (InputKey)int.Parse(this.settings["BackKey"]);
+			this.leftKey = (InputKey)int.Parse(this.settings["LeftKey"]);
+			this.rightKey = (InputKey)int.Parse(this.settings["RightKey"]);
+
 
 
 
@@ -48,16 +59,16 @@ namespace RunMod
 
 						bool setDef = false;
 						Agent main = Agent.Main;
-						
+
 
 						bool flag5 = main == null;
 						if (!flag5)
 						{
+
 							if (!isRunning)
 							{
 								main.SetMaximumSpeedLimit(0.55f, true);
 							}
-
 
 							if (!setDef)
 							{
@@ -82,6 +93,8 @@ namespace RunMod
 							}
 							//InputKey temp = (InputKey)42;
 							//InputKey tempr = (InputKey)36;			
+
+
 							if (Input.IsKeyPressed(sprintKey))
 							{
 								if (isRunning)
@@ -96,15 +109,32 @@ namespace RunMod
 									isRunning = true;
 								}
 							}
-							//InformationManager.DisplayMessage(new InformationMessage(isRunning.ToString()));
 
-							//Used to hold for sprint
-							/*if (Input.IsKeyDown(sprintKey))
+							else if (Input.IsKeyDown( backKey))
 							{
-								main.SetMaximumSpeedLimit(5f, true);
+								//	InformationManager.DisplayMessage(new InformationMessage(main.GetCurrentSpeedLimit().ToString()));
+								if (!isRunning)
+								{
+									main.SetMaximumSpeedLimit(0.279f, true);
+								}
+							}
 
-
-							}*/
+							else if (Input.IsKeyDown(leftKey))
+							{
+								//InformationManager.DisplayMessage(new InformationMessage(main.GetCurrentSpeedLimit().ToString()));
+								if (!isRunning)
+								{
+									main.SetMaximumSpeedLimit(0.403f, true);
+								}
+							}
+							else if (Input.IsKeyDown(rightKey))
+							{
+								//InformationManager.DisplayMessage(new InformationMessage(main.GetCurrentSpeedLimit().ToString()));
+								if (!isRunning)
+								{
+									main.SetMaximumSpeedLimit(0.403f, true);
+								}
+							}
 						}
 					}
 				}
@@ -114,13 +144,17 @@ namespace RunMod
 
 
 		private Dictionary<string, string> settings = new Dictionary<string, string>();
+
 		private bool isRunning = false;
 
 		private InputKey sprintKey = InputKey.V;
+		private InputKey leftKey = InputKey.A;
+		private InputKey rightKey = InputKey.D;
+		private InputKey backKey = InputKey.S;
+
 
 
 
 
 	}
 }
-
