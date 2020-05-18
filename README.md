@@ -1,4 +1,8 @@
 # Run-Mod-for-Bannerlord
+
+##Downloads as of 18/05/2020 : 4196
+
+
 I created a mod for Bannerlord that allows the player to run in combat
 
 Currently there is no documentation for Bannerlord so modding the game requires you to decompile the **dlls**(I used dnSpy) and then make sense of the code. There are no comments and nobody is sure how the different parts of the game all work together.
