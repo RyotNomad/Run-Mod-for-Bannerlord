@@ -1,6 +1,6 @@
 # Run-Mod-for-Bannerlord
 
-## Downloads as of 18/05/2020 : 4196
+## Downloads as of 18/05/2020 : 4196 downloads
 
 
 I created a mod for Bannerlord that allows the player to run in combat
